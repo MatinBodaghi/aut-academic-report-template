@@ -132,9 +132,24 @@
 
 % --- پشتیبانی از زبان فارسی با زی‌پرشین (باید در انتها بارگذاری شود) ---
 \RequirePackage{xepersian}
-\settextfont{B Nazanin}
-\setlatintextfont{Times New Roman}
-\defpersianfont\titr{B Titr}
+
+\IfFontExistsTF{B Nazanin}{
+    \settextfont{B Nazanin}
+}{
+    \settextfont{FreeSerif}
+}
+
+\IfFontExistsTF{Times New Roman}{
+    \setlatintextfont{Times New Roman}
+}{
+    \setlatintextfont{FreeSerif}
+}
+
+\IfFontExistsTF{B Titr}{
+    \defpersianfont\titr{B Titr}
+}{
+    \defpersianfont\titr{FreeSerif}
+}
 
 \SepMark{-}
 \renewcommand{\labelitemi}{$\bullet$}

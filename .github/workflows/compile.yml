@@ -15,18 +15,22 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install TeX Live and XeLaTeX
+      - name: Install TeX Live and Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             texlive-xetex \
             texlive-lang-arabic \
+            texlive-latex-base \
+            texlive-latex-recommended \
             texlive-latex-extra \
             texlive-science \
             texlive-fonts-recommended \
-            texlive-pictures
+            texlive-pictures \
+            fontconfig \
+            poppler-utils
 
-      - name: Install Persian Fonts
+      - name: Install Persian and Latin Fonts
         run: |
           mkdir -p ~/.local/share/fonts
           if [ -d "fonts" ]; then
@@ -34,9 +38,13 @@ jobs:
             cp fonts/*.TTF ~/.local/share/fonts/ 2>/dev/null || true
           fi
           fc-cache -fv
+          echo "=== Registered Target Fonts ==="
+          fc-list : family | grep -E "Nazanin|Titr|Times|Free" || true
 
       - name: Compile Document
         run: |
+          xelatex -interaction=nonstopmode main.tex
+          bibtex main || true
           xelatex -interaction=nonstopmode main.tex
           xelatex -interaction=nonstopmode main.tex
 
