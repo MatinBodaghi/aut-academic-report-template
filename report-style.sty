@@ -1,0 +1,105 @@
+\ProvidesPackage{report-style}[2026/11/15 Modern Academic and Engineering Report Style for XePersian]
+
+% --- ابعاد صفحه و حاشیه‌ها ---
+\RequirePackage[top=2cm,bottom=2.5cm,left=2cm,right=2cm]{geometry}
+
+% --- بسته‌های ریاضیات و فرمول‌بندی ---
+\RequirePackage{amsmath,amssymb}
+
+% --- گرافیک و تصاویر ---
+\RequirePackage{graphicx}
+\graphicspath{{logos/}{images/}{figures/}}
+\RequirePackage{float}
+
+% --- جداول پیشرفته مهندسی ---
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{multicol}
+
+% --- رسم مدارها و نمودارهای برداری ---
+\RequirePackage[siunitx]{circuitikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% --- رنگ‌ها و کادرهای مدرن ---
+\RequirePackage{xcolor}
+\RequirePackage[skins,breakable]{tcolorbox}
+
+% --- نمایش تمیز کدهای برنامه‌نویسی ---
+\RequirePackage{listings}
+
+% --- پیوندها و بوک‌مارک‌ها ---
+\RequirePackage[colorlinks=false,hidelinks]{hyperref}
+\RequirePackage{bookmark}
+
+% --- تنظیمات کادر کدهای برنامه‌نویسی (Listings) ---
+\definecolor{codebg}{rgb}{0.96,0.97,0.99}
+\definecolor{codecomment}{rgb}{0.45,0.50,0.55}
+\definecolor{codekeyword}{rgb}{0.10,0.35,0.85}
+\definecolor{codestring}{rgb}{0.15,0.60,0.25}
+
+\lstdefinestyle{modernCode}{
+    backgroundcolor=\color{codebg},
+    commentstyle=\color{codecomment}\itshape,
+    keywordstyle=\color{codekeyword}\bfseries,
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{codestring},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=7pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{gray!35},
+    frameround=tttt
+}
+% --- استایل پیش‌فرض Listings ---
+\lstset{style=modernCode}
+
+% --- تعریف کادرهای رنگی مدرن (TColorBox) ---
+\newtcolorbox{noteBox}[1][نکته]{
+    colback=blue!4!white,
+    colframe=blue!65!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}
+
+\newtcolorbox{theoremBox}[1][قضیه / رابطه کلیدی]{
+    colback=teal!4!white,
+    colframe=teal!70!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}
+
+\newtcolorbox{warningBox}[1][هشدار / توجه مهم]{
+    colback=orange!5!white,
+    colframe=orange!85!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}
+
+% --- پشتیبانی از زبان فارسی با زی‌پرشین (باید در انتها بارگذاری شود) ---
+\RequirePackage{xepersian}
+\settextfont{B Nazanin}
+\setlatintextfont{Times New Roman}
+\defpersianfont\titr{B Titr}
+
+\SepMark{-}
+\renewcommand{\labelitemi}{$\bullet$}

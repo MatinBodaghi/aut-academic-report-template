@@ -1,0 +1,37 @@
+# LaTeX compilation auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.vrb
+*.xdv
+
+# Backup and swap files
+*~
+*.bak
+*.swp
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+.DS_Store

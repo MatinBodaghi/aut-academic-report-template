@@ -1,0 +1,256 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- فراخوانی بسته استایل قالب ---
+\usepackage{report-style}
+
+% =========================================================================
+% تنظیمات و مشخصات سند (این بخش را مطابق با نیاز خود ویرایش کنید)
+% =========================================================================
+
+\newcommand{\ReportTitle}{عنوان پروژه یا گزارش کار}
+\newcommand{\ReportSubtitle}{بررسی تحلیلی، شبیه‌سازی و اعتبارسنجی عملی}
+\newcommand{\CourseName}{نام درس (مثلاً آز مدارهای الکتریکی ۱)}
+\newcommand{\ProfessorName}{استاد درس: دکتر / مهندس نام استاد}
+\newcommand{\Semester}{نیم‌سال اول ۱۴۰۵}
+
+% مشخصات دانشجو (حالت انفرادی)
+\newcommand{\AuthorName}{محمدمتین بداغی}
+\newcommand{\StudentNumber}{۴۰۴۲۳۰۱۴}
+\newcommand{\StudentEmail}{MatinBodaghi@aut.ac.ir}
+
+% در صورت نیاز به گزارش دونفره (گروهی)، خطوط زیر را فعال کنید:
+% \newcommand{\AuthorTwoName}{نام هم‌گروهی}
+% \newcommand{\StudentTwoNumber}{۴۰۴۲۳xxx}
+% \newcommand{\StudentTwoEmail}{partner@aut.ac.ir}
+
+\begin{document}
+\pagestyle{plain}
+
+% =========================================================================
+% سربرگ صفحه اول (رسمی دانشگاه صنعتی امیرکبیر و دانشکده مهندسی برق)
+% =========================================================================
+\noindent
+\begin{minipage}[c]{0.52\textwidth}
+    \begin{flushright}
+        \begin{tabular}{@{}c@{\hspace{0.35cm}}r@{}}
+            \includegraphics[height=2.1cm,keepaspectratio]{aut-logo.png} &
+            \begin{tabular}{@{}r@{}}
+                {\large\titr دانشگاه صنعتی امیرکبیر} \\[0.12cm]
+                {\small\bfseries (پلی‌تکنیک تهران)} \\[0.12cm]
+                {\normalsize\bfseries دانشکده مهندسی برق}
+            \end{tabular}
+        \end{tabular}
+    \end{flushright}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.46\textwidth}
+    \begin{flushleft}
+        \begin{tabular}{@{}l@{\hspace{0.35cm}}c@{}}
+            \begin{tabular}{@{}l@{}}
+                {\normalsize\bfseries \CourseName} \\[0.12cm]
+                {\small \ProfessorName} \\[0.12cm]
+                {\small \Semester}
+            \end{tabular} &
+            \includegraphics[height=1.8cm,keepaspectratio]{EE-aut.jpg}
+        \end{tabular}
+    \end{flushleft}
+\end{minipage}
+
+\vspace{0.25cm}
+\noindent\rule{\textwidth}{0.8pt}
+\vspace{0.6cm}
+
+% --- عنوان و مشخصات نگارنده ---
+\begin{center}
+    {\LARGE\titr \ReportTitle \par}
+    \vspace{0.3cm}
+    {\Large\bfseries \ReportSubtitle \par}
+    \vspace{0.6cm}
+    
+    % مشخصات انفرادی
+    {\large\bfseries \AuthorName} \\[0.15cm]
+    {\normalsize شماره دانشجویی: \lr{\StudentNumber}} \\[0.1cm]
+    {\small\lr{\StudentEmail}}
+
+    % در صورت دو نفره بودن، بخش بالا را کامنت کرده و جدول زیر را فعال کنید:
+    % \begin{tabular}{c@{\hspace{2.5cm}}c}
+    %     {\large\bfseries \AuthorName} & {\large\bfseries \AuthorTwoName} \\ [0.15cm]
+    %     {\normalsize شماره دانشجویی: \lr{\StudentNumber}} & {\normalsize شماره دانشجویی: \lr{\StudentTwoNumber}} \\ [0.1cm]
+    %     {\small\lr{\StudentEmail}} & {\small\lr{\StudentTwoEmail}}
+    % \end{tabular}
+\end{center}
+
+\vspace{0.8cm}
+
+% =========================================================================
+% ۱. مقدمه و اهداف
+% =========================================================================
+\section{مقدمه و اهداف}
+این سند یک قالب جامع و استاندارد برای نگارش گزارش‌های فنی، پروژه‌های کلاسی، سمینارها و گزارش‌کارهای دانشگاهی است. این قالب بر مبنای موتور \lr{XeLaTeX} و بسته قدرتمند \lr{XePersian} پیکربندی شده و شامل تمامی ابزارهای مورد نیاز یک دانشجوی فنی و مهندسی (نظیر رسم مدار، پلات‌های برداری، کادرهای رنگی، جداول مهندسی و درج کد) می‌باشد.
+
+اهداف اصلی این پروژه عبارتند از:
+\begin{itemize}
+    \item ایجاد یک چارچوب آراسته، تمیز و استاندارد مطابق با تایپوگرافی علمی دانشگاهی.
+    \item دسترسی سریع به کدهای آماده رسم مدارهای الکتریکی با بسته \lr{CircuiTikZ}.
+    \item سهولت در درج کدهای شبیه‌سازی (پایتون، متلب) و فرمول‌بندی‌های چندخطی ریاضی.
+    \item قابلیت کامپایل خودکار در بستر ابری با استفاده از \lr{GitHub Actions}.
+\end{itemize}
+
+\vspace{0.4cm}
+
+% =========================================================================
+% ۲. کادرهای برجسته (نکات، قضایا و هشدارها)
+% =========================================================================
+\section{کادرهای برجسته و تعاریف}
+برای تفکیک بصری مفاهیم کلیدی، سه کادر رنگی پیش‌فرض تعبیه شده است:
+
+\begin{noteBox}[نکته آموزشی]
+    کادرهای نکته برای بیان توضیحات تکمیلی، مشاهدات آزمایشگاهی یا فرضیات اولیه مسئله بسیار مناسب هستند.
+\end{noteBox}
+
+\begin{theoremBox}[قضیه تونن (\lr{Thevenin's Theorem})]
+    هر مدار خطی مستقل از پیچیدگی داخلی، از دید دو پایانه خروجی $a$ و $b$ معادل یک منبع ولتاژ مستقل $V_{th}$ سری با یک مقاومت معادل $R_{th}$ است.
+\end{theoremBox}
+
+\begin{warningBox}[نکته حیاتی در شبیه‌سازی \lr{SPICE}]
+    در نرم‌افزارهای خانواده \lr{SPICE}، مقیاس مگا به صورت \lr{meg} نوشته می‌شود و نماد \lr{m} به عنوان میلی ($10^{-3}$) پردازش می‌گردد. همچنین گره زمین مرجع حتماً باید قطعه \lr{0} باشد.
+\end{warningBox}
+
+\vspace{0.4cm}
+
+% =========================================================================
+% ۳. مبانی تئوری و فرمول‌بندی ریاضی
+% =========================================================================
+\section{مبانی تئوری و روابط ریاضی}
+در این بخش، معادلات حاکم بر مدار به صورت فرمول‌های تک‌خطی و چندخطی استاندارد درج می‌شوند. به عنوان نمونه، معادله دیفرانسیل پاسخ گذرا و فرکانس تشدید مدار $RLC$ سری به صورت زیر است:
+\begin{equation}
+    v_{\mathrm{in}}(t) = R i(t) + L \frac{di(t)}{dt} + \frac{1}{C}\int_{-\infty}^{t} i(\tau)\,d\tau
+\end{equation}
+همچنین فرکانس تشدید طبیعی ($f_0$) و فاکتور کیفیت ($Q$) عبارتند از:
+\begin{align}
+    \omega_0 &= \frac{1}{\sqrt{LC}} \implies f_0 = \frac{1}{2\pi\sqrt{LC}} \\
+    Q &= \frac{\omega_0 L}{R} = \frac{1}{R}\sqrt{\frac{L}{C}}
+\end{align}
+
+درصد خطای نسبی نیز طبق مرجع~\cite{hayt2018engineering} با رابطه زیر محاسبه می‌شود:
+\begin{equation}
+    \text{\lr{Error}} = \left| \frac{\text{مقدار تئوری} - \text{مقدار اندازه‌گیری}}{\text{مقدار تئوری}} \right| \times 100
+\end{equation}
+
+\vspace{0.4cm}
+
+% =========================================================================
+% ۴. رسم مدار با CircuiTikZ
+% =========================================================================
+\section{شماتیک مدارهای الکتریکی با \lr{CircuiTikZ}}
+تمامی شماتیک‌ها به صورت وکتور باکیفیت و بدون افت وضوح رسم می‌شوند. در شکل~\ref{fig:sample_circuit} یک مدار تشدید نمونه نمایش داده شده است:
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[american, scale=0.9, transform shape]
+        \draw (0,0) to[sV, l=$V_{\mathrm{ac}}$] (0,3)
+              -- (0.6,3) to[R, l=$R{=}10\,\Omega$, v_=$V_R$] (3.0,3)
+              -- (3.6,3) to[L, l=$L{=}10\,\mu\mathrm{H}$, v_=$V_L$] (6.0,3)
+              -- (6.8,3) to[C, l=$C{=}1\,\mu\mathrm{F}$, v=$V_C$] (6.8,0)
+              -- (0,0);
+        \draw (0,0) node[ground]{};
+    \end{circuitikz}
+    \caption{شماتیک مدار تشدید $RLC$ سری با تفکیک پلاریته ولتاژها}
+    \label{fig:sample_circuit}
+\end{figure}
+
+\vspace{0.4cm}
+
+% =========================================================================
+% ۵. رسم نمودارهای برداری ریاضی با Pgfplots
+% =========================================================================
+\section{نمودارهای برداری ریاضی با \lr{Pgfplots}}
+علاوه بر تصاویر خارجی، می‌توان توابع ریاضی را مستقیماً در لاتک رسم نمود. به عنوان نمونه، منحنی نوسان میرا در شکل~\ref{fig:damped_plot} رسم شده است:
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.78\textwidth,
+            height=5.5cm,
+            xlabel={زمان ($t$ برحسب ثانیه)},
+            ylabel={دامنه پاسخ ($v(t)$)},
+            xmin=0, xmax=6,
+            ymin=-1.2, ymax=1.2,
+            grid=both,
+            grid style={line width=.1pt, draw=gray!20},
+            major grid style={line width=.2pt,draw=gray!50},
+            axis lines=middle,
+            samples=200,
+            domain=0:6
+        ]
+            \addplot [thick, blue] {exp(-0.7*x) * cos(deg(4*x))};
+            \addplot [dashed, red!70!black] {exp(-0.7*x)};
+            \addplot [dashed, red!70!black] {-exp(-0.7*x)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{نمودار پاسخ گذرای نوسانی میرا به همراه پوش نمایی}
+    \label{fig:damped_plot}
+\end{figure}
+
+\vspace{0.4cm}
+
+% =========================================================================
+% ۶. درج کدهای برنامه‌نویسی با Listings
+% =========================================================================
+\section{درج کدهای برنامه‌نویسی}
+برای پروژه‌هایی که شامل کدهای شبیه‌سازی یا پردازش داده هستند، محیط \lr{modernCode} کدهای خوانا و شماره‌گذاری‌شده فراهم می‌کند:
+
+\begin{latin}
+\begin{lstlisting}[language=Python, caption={Sample Python code for RLC resonance and quality factor}]
+import numpy as np
+
+def rlc_resonance(R, L, C):
+    """Calculate resonance frequency and quality factor."""
+    f0 = 1.0 / (2.0 * np.pi * np.sqrt(L * C))
+    Q = (1.0 / R) * np.sqrt(L / C)
+    bandwidth = f0 / Q
+    return f0, Q, bandwidth
+
+# Example parameters: R = 10 Ohm, L = 10 uH, C = 1 uF
+f0, Q, bw = rlc_resonance(R=10.0, L=10e-6, C=1e-6)
+print(f"Resonance Frequency: {f0/1e3:.2f} kHz")
+print(f"Quality Factor (Q):  {Q:.3f}")
+\end{lstlisting}
+\end{latin}
+
+\vspace{0.4cm}
+
+% =========================================================================
+% ۷. جدول استاندارد مهندسی با Booktabs
+% =========================================================================
+\section{جدول استاندارد مقایسه نتایج}
+جدول~\ref{tab:comparison} نمونه‌ای از یک جدول استاندارد ۳ خطی مهندسی با بسته‌های \lr{booktabs} و \lr{tabularx} است:
+
+\begin{table}[H]
+    \centering
+    \caption{مقایسه نتایج تحلیلی تئوری با مقادیر شبیه‌سازی}
+    \label{tab:comparison}
+    \begin{tabular}{lcccc}
+        \toprule
+        \textbf{شاخص ارزیابی} & \textbf{رابطه تحلیلی} & \textbf{مقدار تئوری} & \textbf{مقدار شبیه‌سازی} & \textbf{درصد خطا (\%)} \\
+        \midrule
+        فرکانس تشدید ($f_0$) & $\frac{1}{2\pi\sqrt{LC}}$ & $50.33\,\mathrm{kHz}$ & $51.01\,\mathrm{kHz}$ & $1.35\%$ \\
+        ولتاژ قله مقاومت ($V_{R}$) & $V_{\mathrm{in}}$ & $1.0000\,\mathrm{V}$ & $1.0000\,\mathrm{V}$ & $0.00\%$ \\
+        فاکتور کیفیت ($Q$) & $\frac{1}{R}\sqrt{L/C}$ & $0.3162$ & $0.3158$ & $0.13\%$ \\
+        امپدانس در تشدید ($Z_0$) & $R$ & $10.00\,\Omega$ & $10.00\,\Omega$ & $0.00\%$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\vspace{0.6cm}
+
+% =========================================================================
+% مراجع و منابع
+% =========================================================================
+\begin{latin}
+\bibliographystyle{ieeetr}
+\bibliography{references}
+\end{latin}
+
+\end{document}
