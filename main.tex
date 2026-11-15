@@ -8,19 +8,19 @@
 % =========================================================================
 
 \newcommand{\ReportTitle}{عنوان پروژه یا گزارش کار}
-\newcommand{\ReportSubtitle}{بررسی تحلیلی، شبیه‌سازی و اعتبارسنجی عملی}
-\newcommand{\CourseName}{نام درس (مثلاً آز مدارهای الکتریکی ۱)}
-\newcommand{\ProfessorName}{استاد درس: دکتر / مهندس نام استاد}
-\newcommand{\Semester}{نیم‌سال اول ۱۴۰۵}
+\newcommand{\ReportSubtitle}{زیرعنوان گزارش یا پروژه}
+\newcommand{\CourseName}{نام درس}
+\newcommand{\ProfessorName}{استاد درس: نام استاد}
+\newcommand{\Semester}{نیم‌سال تحصیلی}
 
 % مشخصات دانشجو (حالت انفرادی)
-\newcommand{\AuthorName}{محمدمتین بداغی}
-\newcommand{\StudentNumber}{۴۰۴۲۳۰۱۴}
-\newcommand{\StudentEmail}{MatinBodaghi@aut.ac.ir}
+\newcommand{\AuthorName}{نام و نام خانوادگی}
+\newcommand{\StudentNumber}{۱۲۳۴۵۶۷۸}
+\newcommand{\StudentEmail}{student@aut.ac.ir}
 
 % در صورت نیاز به گزارش دونفره (گروهی)، خطوط زیر را فعال کنید:
 % \newcommand{\AuthorTwoName}{نام هم‌گروهی}
-% \newcommand{\StudentTwoNumber}{۴۰۴۲۳xxx}
+% \newcommand{\StudentTwoNumber}{۱۲۳۴۵۶۷۹}
 % \newcommand{\StudentTwoEmail}{partner@aut.ac.ir}
 
 \begin{document}
@@ -165,38 +165,76 @@
 % ۵. رسم نمودارهای برداری ریاضی با Pgfplots
 % =========================================================================
 \section{نمودارهای برداری ریاضی با \lr{Pgfplots}}
-علاوه بر تصاویر خارجی، می‌توان توابع ریاضی را مستقیماً در لاتک رسم نمود. به عنوان نمونه، منحنی نوسان میرا در شکل~\ref{fig:damped_plot} رسم شده است:
+علاوه بر تصاویر خارجی، می‌توان توابع ریاضی و داده‌های تجربی را مستقیماً با کیفیت برداری در لاتک رسم نمود. به عنوان نمونه، منحنی نوسان میرا به همراه پوش نمایی در شکل~\ref{fig:damped_plot} رسم شده است:
 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            width=0.78\textwidth,
-            height=5.5cm,
-            xlabel={زمان ($t$ برحسب ثانیه)},
-            ylabel={دامنه پاسخ ($v(t)$)},
+            width=0.82\textwidth,
+            height=6.2cm,
+            xlabel={زمان برحسب ثانیه},
+            ylabel={دامنه ولتاژ برحسب ولت},
             xmin=0, xmax=6,
             ymin=-1.2, ymax=1.2,
             grid=both,
-            grid style={line width=.1pt, draw=gray!20},
-            major grid style={line width=.2pt,draw=gray!50},
-            axis lines=middle,
+            grid style={line width=.1pt, draw=gray!25},
+            major grid style={line width=.25pt, draw=gray!45},
+            legend pos=north east,
+            legend style={font=\footnotesize, fill=white, fill opacity=0.9, draw=gray!40},
             samples=200,
             domain=0:6
         ]
             \addplot [thick, blue] {exp(-0.7*x) * cos(deg(4*x))};
-            \addplot [dashed, red!70!black] {exp(-0.7*x)};
-            \addplot [dashed, red!70!black] {-exp(-0.7*x)};
+            \addlegendentry{$v(t) = e^{-0.7t}\cos(4t)$}
+
+            \addplot [dashed, red!80!black, semithick] {exp(-0.7*x)};
+            \addlegendentry{پوش نمایی}
+
+            \addplot [dashed, red!80!black, semithick, forget plot] {-exp(-0.7*x)};
         \end{axis}
     \end{tikzpicture}
-    \caption{نمودار پاسخ گذرای نوسانی میرا به همراه پوش نمایی}
+    \caption{نمودار برداری پاسخ گذرای نوسانی میرا به همراه پوش نمایی}
     \label{fig:damped_plot}
 \end{figure}
 
 \vspace{0.4cm}
 
 % =========================================================================
-% ۶. درج کدهای برنامه‌نویسی با Listings
+% ۶. رسم فلوچارت و نمودارهای فرآیندی با TikZ
+% =========================================================================
+\section{رسم فلوچارت و دیاگرام‌های فرآیندی با \lr{TikZ}}
+برای نمایش الگوریتم‌ها، مراحل اجرای پروژه‌ها و متدولوژی تحقیق، می‌توان بدون نیاز به نرم‌افزارهای خارجی و به صورت مستقیم فلوچارت‌های برداری استاندارد رسم کرد. در شکل~\ref{fig:flowchart_demo} یک نمونه فلوچارت تصمیم‌گیری آورده شده است:
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance=1.2cm and 2cm]
+        % گره‌های فلوچارت
+        \node (start) [flowStartEnd] {\rl{شروع فرآیند}};
+        \node (input) [flowIO, below=of start] {\rl{دریافت پارامترهای ورودی}};
+        \node (proc)  [flowProcess, below=of input] {\rl{محاسبه فرکانس تشدید} $f_0$ \\ \rl{و فاکتور کیفیت} $Q$};
+        \node (dec)   [flowDecision, below=of proc] {\rl{آیا} $Q \ge 0.5$ \rl{است؟}};
+        \node (sub)   [flowProcess, below=1.1cm of dec] {\rl{پاسخ نوسانی زیرمیرا} \\ \lr{(Underdamped)}};
+        \node (crit)  [flowProcess, left=1.0cm of dec] {\rl{پاسخ نامیرا یا فرامیرا} \\ \lr{(Overdamped)}};
+        \node (stop)  [flowStartEnd, below=1.1cm of sub] {\rl{ثبت نتایج و پایان}};
+
+        % فلش‌ها و اتصالات
+        \draw [flowArrow] (start) -- (input);
+        \draw [flowArrow] (input) -- (proc);
+        \draw [flowArrow] (proc) -- (dec);
+        \draw [flowArrow] (dec) -- node[right, font=\small] {\rl{بله}} (sub);
+        \draw [flowArrow] (dec) -- node[above, font=\small] {\rl{خیر}} (crit);
+        \draw [flowArrow] (crit) |- (stop);
+        \draw [flowArrow] (sub) -- (stop);
+    \end{tikzpicture}
+    \caption{نمونه فلوچارت استاندارد مهندسی برای ارزیابی وضعیت میرایی مدار}
+    \label{fig:flowchart_demo}
+\end{figure}
+
+\vspace{0.4cm}
+
+% =========================================================================
+% ۷. درج کدهای برنامه‌نویسی با Listings
 % =========================================================================
 \section{درج کدهای برنامه‌نویسی}
 برای پروژه‌هایی که شامل کدهای شبیه‌سازی یا پردازش داده هستند، محیط \lr{modernCode} کدهای خوانا و شماره‌گذاری‌شده فراهم می‌کند:
@@ -222,7 +260,7 @@ print(f"Quality Factor (Q):  {Q:.3f}")
 \vspace{0.4cm}
 
 % =========================================================================
-% ۷. جدول استاندارد مهندسی با Booktabs
+% ۸. جدول استاندارد مهندسی با Booktabs
 % =========================================================================
 \section{جدول استاندارد مقایسه نتایج}
 جدول~\ref{tab:comparison} نمونه‌ای از یک جدول استاندارد ۳ خطی مهندسی با بسته‌های \lr{booktabs} و \lr{tabularx} است:

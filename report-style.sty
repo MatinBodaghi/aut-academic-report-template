@@ -18,10 +18,45 @@
 \RequirePackage{subcaption}
 \RequirePackage{multicol}
 
-% --- رسم مدارها و نمودارهای برداری ---
+% --- رسم مدارها، نمودارها و فلوچارت‌ها ---
 \RequirePackage[siunitx]{circuitikz}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, calc}
+
+% استایل‌های استاندارد برای رسم فلوچارت
+\tikzset{
+    flowStartEnd/.style={
+        rectangle, rounded corners=8pt,
+        minimum width=2.4cm, minimum height=0.8cm,
+        align=center, draw=blue!75!black, fill=blue!10,
+        thick, font=\small
+    },
+    flowProcess/.style={
+        rectangle,
+        minimum width=3.2cm, minimum height=0.9cm,
+        align=center, text width=3.4cm,
+        draw=teal!75!black, fill=teal!10,
+        thick, font=\small
+    },
+    flowDecision/.style={
+        diamond, aspect=2,
+        minimum width=2.6cm, minimum height=0.9cm,
+        align=center,
+        draw=orange!80!black, fill=orange!12,
+        thick, font=\small
+    },
+    flowIO/.style={
+        trapezium, trapezium left angle=70, trapezium right angle=110,
+        minimum width=2.8cm, minimum height=0.8cm,
+        align=center, text width=2.8cm,
+        draw=purple!75!black, fill=purple!10,
+        thick, font=\small
+    },
+    flowArrow/.style={
+        thick, -{Stealth[length=2.5mm]}, draw=gray!70!black
+    }
+}
 
 % --- رنگ‌ها و کادرهای مدرن ---
 \RequirePackage{xcolor}

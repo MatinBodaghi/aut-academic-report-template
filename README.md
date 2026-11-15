@@ -3,7 +3,7 @@
 
 [![LaTeX XeTeX](https://img.shields.io/badge/LaTeX-XeTeX-blue.svg?logo=latex)](https://www.latex-project.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Compile LaTeX Document](https://github.com/matinbodaghi/aut-academic-report-template/actions/workflows/compile.yml/badge.svg)](../../actions)
+[![Compile LaTeX Document](https://img.shields.io/badge/CI-GitHub%20Actions-blue?logo=githubactions)](../../actions)
 [![Template](https://img.shields.io/badge/GitHub-Template-brightgreen.svg)](#نحوه-استفاده-از-این-مخزن-به-عنوان-template)
 
 قالب جامع، ماژولار و استاندارد برای نگارش **گزارش‌های کار آزمایشگاهی، پروژه‌های پایانی دروس، سمینارها و مقالات پژوهشی** به زبان فارسی و انگلیسی بر پایه موتور `XeLaTeX` و بسته قدرتمند `XePersian`، به همراه استایل رسمی دانشگاه صنعتی امیرکبیر (پلی‌تکنیک تهران).
@@ -25,9 +25,10 @@
 - **کادرهای رنگی پیشرفته (`tcolorbox`):**
   - کادر نکته (`noteBox`)، کادر قضایا و فرمول‌های کلیدی (`theoremBox`) و کادر هشدار و نکات مهم (`warningBox`).
 
-- **رسم برداری مدارها و نمودارها (Vector Graphics):**
+- **رسم برداری مدارها، نمودارها و فلوچارت‌ها (Vector Graphics & Flowcharts):**
   - رسم انواع شماتیک‌های مداری الکتریکی با بسته `circuitikz` (استاندارد IEEE / American).
   - ترسیم مستقیم نمودارهای ریاضیاتی و توابع دوبعدی با بسته `pgfplots`.
+  - رسم فلوچارت‌های استاندارد الگوریتمی و فرآیندی با گره‌های آماده `TikZ` (`flowStartEnd`، `flowProcess`، `flowDecision`، `flowIO`، `flowArrow`).
 
 - **محیط کدنویسی استاندارد (`listings`):**
   - تنظیم استایل `modernCode` با شماره خطوط، تفکیک رنگی سینتکس و کادر اختصاصی.
@@ -106,20 +107,19 @@ xelatex main.tex
 
 ```latex
 % مشخصات اصلی گزارش / پروژه
-\newcommand{\universityName}{دانشگاه صنعتی امیرکبیر (پلی‌تکنیک تهران)}
-\newcommand{\facultyName}{دانشکده مهندسی برق}
-\newcommand{\courseName}{آزمایشگاه مدارهای الکتریکی ۱}
-\newcommand{\reportTitle}{گزارش کار شماره ۶: شبیه‌سازی با PSpice}
-\newcommand{\instructorName}{استاد محترم درس}
-\newcommand{\semester}{نیم‌سال اول تحصیلی ۱۴۰۴--۱۴۰۵}
+\newcommand{\ReportTitle}{عنوان پروژه یا گزارش کار}
+\newcommand{\ReportSubtitle}{زیرعنوان گزارش یا پروژه}
+\newcommand{\CourseName}{نام درس}
+\newcommand{\ProfessorName}{استاد درس: نام استاد}
+\newcommand{\Semester}{نیم‌سال تحصیلی}
 
 % مشخصات نویسنده (حالت تک‌نفره)
-\newcommand{\authorName}{محمدمتین بداغی}
-\newcommand{\studentID}{۴۰۴۲۳۰۱۴}
-\newcommand{\authorEmail}{MatinBodaghi@aut.ac.ir}
+\newcommand{\AuthorName}{نام و نام خانوادگی}
+\newcommand{\StudentNumber}{۱۲۳۴۵۶۷۸}
+\newcommand{\StudentEmail}{student@aut.ac.ir}
 ```
 
-> **نکته:** برای گزارش‌های گروهی، کافی است کادر جدول مشخصات را در بدنه `main.tex` بر اساس کامنت‌های راهنما ویرایش کنید.
+> **نکته:** برای گزارش‌های گروهی، کافی است کادر جدول مشخصات را در بدنه `main.tex` بر اساس کامنت‌های راهنما فعال کنید.
 
 ---
 
@@ -150,7 +150,18 @@ xelatex main.tex
 \end{circuitikz}
 ```
 
-### ۳. درج کد برنامه‌نویسی
+### ۳. رسم فلوچارت با `TikZ`
+```latex
+\begin{tikzpicture}[node distance=1.2cm and 2cm]
+    \node (start) [flowStartEnd] {\rl{شروع}};
+    \node (proc)  [flowProcess, below=of start] {\rl{محاسبات مداری}};
+    \node (stop)  [flowStartEnd, below=of proc] {\rl{پایان}};
+    \draw [flowArrow] (start) -- (proc);
+    \draw [flowArrow] (proc) -- (stop);
+\end{tikzpicture}
+```
+
+### ۴. درج کد برنامه‌نویسی
 ```latex
 \begin{latin}
 \begin{lstlisting}[language=Python, caption={Resonance Calculation}]
@@ -176,5 +187,5 @@ def calc_f0(L, C):
 این پروژه تحت مجوز [MIT](LICENSE) منتشر شده است و استفاده از آن برای کلیه دانشجویان، پژوهشگران و اساتید با حفظ کپی‌رایت آزاد است.
 
 ---
-**توسعه‌داده‌شده توسط [محمدمتین بداغی](https://github.com/matinbodaghi)**  
-دانشگاه صنعتی امیرکبیر (پلی‌تکنیک تهران)
+**دانشگاه صنعتی امیرکبیر (پلی‌تکنیک تهران)**  
+*دانشکده مهندسی برق و کامپیوتر*
