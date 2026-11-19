@@ -1,0 +1,76 @@
+\ProvidesPackage{proposal-style}[2026/11/20 Modern Official Proposal & Administrative Letter Style for AUT XePersian]
+
+% --- ابعاد صفحه و حاشیه‌ها ---
+\RequirePackage[top=2.5cm,bottom=2.5cm,left=2cm,right=2cm,headheight=16pt]{geometry}
+
+% --- سربرگ و پانویس اداری ---
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+
+% --- بسته‌های ریاضیات و فرمول‌بندی ---
+\RequirePackage{amsmath,amssymb}
+
+% --- گرافیک و تصاویر ---
+\RequirePackage{graphicx}
+\graphicspath{{logos/}{../logos/}{images/}{../images/}}
+\RequirePackage{float}
+
+% --- جداول پیشرفته مهندسی ---
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{multicol}
+
+% --- رنگ‌ها و کادرهای مدرن ---
+\RequirePackage{xcolor}
+\RequirePackage[skins,breakable]{tcolorbox}
+
+% --- پیوندها و بوک‌مارک‌ها ---
+\RequirePackage[colorlinks=false,hidelinks]{hyperref}
+\RequirePackage{bookmark}
+
+% --- تعریف کادرهای رنگی مدرن (TColorBox) در صورت نیاز ---
+\newtcolorbox{noteBox}[1][نکته]{
+    colback=blue!4!white,
+    colframe=blue!65!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}
+
+\newtcolorbox{warningBox}[1][توجه]{
+    colback=orange!5!white,
+    colframe=orange!85!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.8pt,
+    left=3mm, right=3mm, top=2mm, bottom=2mm
+}
+
+% --- پشتیبانی از زبان فارسی با زی‌پرشین (باید در انتها بارگذاری شود) ---
+\RequirePackage{xepersian}
+
+\IfFontExistsTF{B Nazanin}{
+    \settextfont{B Nazanin}
+}{
+    \settextfont{FreeSerif}
+}
+
+\IfFontExistsTF{Times New Roman}{
+    \setlatintextfont{Times New Roman}
+}{
+    \setlatintextfont{FreeSerif}
+}
+
+\IfFontExistsTF{B Titr}{
+    \defpersianfont\titr{B Titr}
+}{
+    \defpersianfont\titr{FreeSerif}
+}
+
+\SepMark{-}
+\renewcommand{\labelitemi}{$\bullet$}

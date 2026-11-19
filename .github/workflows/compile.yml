@@ -41,16 +41,25 @@ jobs:
           echo "=== Registered Target Fonts ==="
           fc-list : family | grep -E "Nazanin|Titr|Times|Free" || true
 
-      - name: Compile Document
+      - name: Compile Academic Report
         run: |
           xelatex -interaction=nonstopmode main.tex
           bibtex main || true
           xelatex -interaction=nonstopmode main.tex
           xelatex -interaction=nonstopmode main.tex
 
-      - name: Upload PDF Artifact
+      - name: Compile Proposal Template
+        run: |
+          cd proposal-template
+          xelatex -interaction=nonstopmode main.tex
+          xelatex -interaction=nonstopmode main.tex
+          cd ..
+
+      - name: Upload PDF Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: academic-document-pdf
-          path: main.pdf
+          name: compiled-aut-documents
+          path: |
+            main.pdf
+            proposal-template/main.pdf
           if-no-files-found: error

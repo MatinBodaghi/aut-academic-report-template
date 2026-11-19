@@ -1,12 +1,30 @@
-# قالب مدرن گزارش، مقاله و پروژه‌های آکادمیک دانشگاه صنعتی امیرکبیر
-# Modern AUT Academic Report, Paper & Project LaTeX Template
+# مجموعه قالب‌های مدرن آکادمیک و اداری دانشگاه صنعتی امیرکبیر
+# Modern AUT Academic Report & Official Proposal LaTeX Templates
 
 [![LaTeX XeTeX](https://img.shields.io/badge/LaTeX-XeTeX-blue.svg?logo=latex)](https://www.latex-project.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Compile LaTeX Document](https://img.shields.io/badge/CI-GitHub%20Actions-blue?logo=githubactions)](../../actions)
 [![Template](https://img.shields.io/badge/GitHub-Template-brightgreen.svg)](#نحوه-استفاده-از-این-مخزن-به-عنوان-template)
 
-قالب جامع، ماژولار و استاندارد برای نگارش **گزارش‌های کار آزمایشگاهی، پروژه‌های پایانی دروس، سمینارها و مقالات پژوهشی** به زبان فارسی و انگلیسی بر پایه موتور `XeLaTeX` و بسته قدرتمند `XePersian`، به همراه استایل رسمی دانشگاه صنعتی امیرکبیر (پلی‌تکنیک تهران).
+مجموعه قالب‌های جامع، ماژولار و استاندارد برای **گزارش‌های کار آزمایشگاهی، پروژه‌های درسی، مقالات آکادمیک، و طرح‌های پیشنهادی/پروپوزال‌های اداری رسمی همراه با نامه روکش** به زبان فارسی و انگلیسی بر پایه موتور `XeLaTeX` و بسته قدرتمند `XePersian`، با استایل رسمی دانشگاه صنعتی امیرکبیر (پلی‌تکنیک تهران).
+
+---
+
+## 📚 قالب‌های موجود در این مخزن
+
+این مخزن شامل دو قالب اصلی و آماده استفاده است:
+
+### ۱. 📄 قالب گزارش، مقاله و پروژه‌های آکادمیک (`main.tex` در ریشه مخزن)
+- طراحی‌شده برای گزارش‌های آزمایشگاهی، سمینارها، تمارین و پروژه‌های کلاسی.
+- دارای سربرگ مشخصات تحصیلی دو ستونه (دانشگاه + مشخصات درس و استاد).
+- قابلیت تغییر سریع بین گزارش‌های انفرادی و تیمی.
+- مجهز به محیط‌های ترسیم مدارهای الکتریکی (`circuitikz`)، رسم نمودار (`pgfplots`)، فلوچارت‌های برداری (`TikZ`)، کدهای برنامه‌نویسی (`listings`) و کادرهای رنگی (`tcolorbox`).
+
+### ۲. 📑 قالب طرح پیشنهادی و نامه‌نگاری رسمی اداری (`proposal-template/`)
+- طراحی‌شده برای **طرح‌های پیشنهادی (پروپوزال‌ها)، نامه‌های درخواست رسمی، درخواست بودجه، فضا و امکانات اداری/دانشجویی**.
+- **صفحه اول (نامه روکش رسمی):** سربرگ رسمی ۳ بخشی با «بسمه تعالی» و لوگوهای رسمی، قلم ۱۳ با فاصله خطوط باز و اختصاص فضای کافی در حاشیه جهت پاراف و دستور مسئولین محترم (فاقد شماره صفحه).
+- **صفحات دوم به بعد (طرح پیشنهادی پیوست):** سربرگ و پانویس اداری استاندارد، ساختار ۹ مرحله‌ای توجیه‌پذیر و مدون (مقدمه و چالش‌ها، اهداف، محورهای اجرایی، توجیه فضا و منابع، نقش اجرایی تشکل، دستاوردها، تفکیک درخواست‌های اصلی و تکمیلی، تعهدات مجریان، و جمع‌بندی).
+- برای جزئیات بیشتر به [راهنمای قالب پروپوزال](proposal-template/README.md) مراجعه کنید.
 
 ---
 
@@ -57,23 +75,26 @@
 aut-academic-report-template/
 ├── .github/
 │   └── workflows/
-│       └── compile.yml        # کامپایل ابری خودکار با گیت‌هاب اکشنز
+│       └── compile.yml            # کامپایل ابری خودکار هر دو سند با گیت‌هاب اکشنز
 ├── .vscode/
-│   └── settings.json          # تنظیمات کامپایل سریع در VS Code
-├── fonts/                     # فونت‌های فارسی موردنیاز (B Nazanin, B Titr)
-│   ├── BNazanin.ttf
-│   └── BTitrBd.ttf
-├── figures/                   # دیاگرام‌ها و نمودارهای برداری
-├── images/                    # اسکرین‌شات‌ها و تصاویر گزارش
-├── logos/                     # لوگوی دانشگاه و دانشکده
-│   ├── aut-logo.png
-│   └── EE-aut.jpg
-├── .gitignore                 # نادیده گرفتن فایل‌های موقت لاتک
-├── LICENSE                    # مجوز MIT
-├── README.md                  # راهنمای جامع مخزن
-├── main.tex                   # سند اصلی و دمو جامع قالب
-├── report-style.sty           # پکیج استایل، کادرها و ماکروها
-└── references.bib             # فایل دیتابیس مراجع BibTeX
+│   └── settings.json              # تنظیمات کامپایل سریع تک‌کلیکه در VS Code
+├── fonts/                         # فونت‌های فارسی موردنیاز (B Nazanin, B Titr, Times)
+├── figures/                       # دیاگرام‌ها و نمودارهای برداری
+├── images/                        # تصاویر گزارش
+├── logos/                         # لوگوهای رسمی دانشگاه و دانشکده
+├── main.tex                       # [قالب ۱] سند اصلی گزارش درسی / پروژه / مقاله
+├── report-style.sty               # پکیج استایل، کادرها و ماکروهای گزارش
+├── references.bib                 # فایل دیتابیس مراجع BibTeX
+├── proposal-template/             # [قالب ۲] قالب رسمی طرح پیشنهادی و نامه اداری
+│   ├── main.tex                   # سند اصلی طرح پیشنهادی (شامل نامه روکش اداری)
+│   ├── proposal-style.sty         # پکیج استایل اختصاصی پروپوزال و نامه‌نگاری
+│   ├── main.pdf                   # خروجی کامپایل‌شده پیش‌نمایش (۶ صفحه)
+│   ├── README.md                  # راهنمای کامل استفاده از قالب پروپوزال
+│   ├── fonts/                     # فونت‌های محلی قالب پروپوزال
+│   └── logos/                     # لوگوهای دانشگاه و دانشکده
+├── .gitignore                     # نادیده گرفتن فایل‌های موقت لاتک
+├── LICENSE                        # مجوز MIT
+└── README.md                      # راهنمای جامع مخزن
 ```
 
 ---
@@ -85,14 +106,20 @@ aut-academic-report-template/
 - موتور کامپایل: **XeLaTeX** (به دلیل استفاده از زبان فارسی و بسته `xepersian`).
 
 ### ۲. کامپایل با خط فرمان (Terminal / CMD / PowerShell)
-در پوشه پروژه دستورهای زیر را اجرا کنید:
-
-```bash
-xelatex main.tex
-bibtex main
-xelatex main.tex
-xelatex main.tex
-```
+- **برای کامپایل قالب گزارش و پروژه آکادمیک:**
+  ```bash
+  xelatex -interaction=nonstopmode main.tex
+  bibtex main
+  xelatex -interaction=nonstopmode main.tex
+  xelatex -interaction=nonstopmode main.tex
+  ```
+- **برای کامپایل قالب طرح پیشنهادی و نامه اداری:**
+  ```bash
+  cd proposal-template
+  xelatex -interaction=nonstopmode main.tex
+  xelatex -interaction=nonstopmode main.tex
+  cd ..
+  ```
 
 ### ۳. کامپایل در VS Code
 1. اکستنشن [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) را نصب کنید.
